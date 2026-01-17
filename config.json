@@ -1,0 +1,111 @@
+{
+  "ascii": [
+    "███████╗██╗ ███╗   ██╗██████╗  ██╗  ██╗",
+    "██╔════╝██║ ████╗  ██║██╔════╝ ██║  ██║",
+    "███████╗██║ ██╔██╗ ██║██║  ███╗███████║",
+    "╚════██║██║ ██║╚██╗██║██║   ██║██╔══██║",
+    "███████║██║ ██║ ╚████║╚██████╔╝██║  ██║",
+    "╚══════╝╚═╝ ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝"
+  ],
+  "title": "Somyajeet Singh | AI & ML Engineer",
+  "username": "somyajeet",
+  "hostname": "somya15@",
+  "password": "admin",
+  "repoLink": "https://github.com/ssgamingop/portfolio",
+  "social": {
+    "email": "somyajeetsingh15@gmail.com",
+    "github": "https://github.com/ssgamingop",
+    "linkedin": "https://www.linkedin.com/in/somyajeetsingh"
+  },
+  "aboutGreeting": "Hello. I am Somyajeet Singh. Welcome to my digital workspace.",
+  "education": [
+    {
+      "institution": "ITM Skills University, Navi Mumbai",
+      "degree": "B.Tech in Computer Science (AI & ML)",
+      "period": "2025 – Present"
+    },
+    {
+      "institution": "Sarvodaya Bal Vidyalaya, Moti Nagar, New Delhi",
+      "degree": "12th",
+      "period": "Completed: 2025"
+    },
+    {
+      "institution": "Happy Senior School, Kirti Nagar, New Delhi",
+      "degree": "10th",
+      "period": "Completed: 2023"
+    }
+  ],
+  "skills": {
+    "languages": [
+      "Python",
+      "JavaScript",
+      "C++ (Basics)"
+    ],
+    "web": [
+      "HTML5",
+      "CSS3",
+      "JavaScript"
+    ],
+    "ai_ml": [
+      "Problem-solving mindset",
+      "Automation workflows",
+      "ML Fundamentals"
+    ],
+    "tools": [
+      "Git & GitHub",
+      "Figma",
+      "API Integration"
+    ]
+  },
+  "projects": [
+    [
+      "AI Automation Workflow System",
+      "Pipeline to generate content ideas, scripts, and assets using Python and JS.",
+      "https://github.com/ssgamingop"
+    ],
+    [
+      "AR-Based Interactive Projects",
+      "Experimental AR apps using OpenCV and Python with mouse interactions.",
+      "https://github.com/ssgamingop/kit_making"
+    ],
+    [
+      "Sur Sangam - AI Music Generation Platform",
+      "AI to generate Hindi lyrics, compose music, and suggest improvements with browser-based persistent storage.",
+      "https://github.com/ssgamingop/sur_sangam"
+    ]
+  ],
+  "futureGoals": [
+    "Become a skilled AI Engineer",
+    "Build intelligent systems and automation tools",
+    "Contribute to impactful tech projects"
+  ],
+  "strengths": [
+    "Creative thinking",
+    "Strong learning mindset",
+    "Logical problem-solving",
+    "Consistent self-improvement"
+  ],
+  "colors": {
+    "background": "#0D1117",
+    "foreground": "#E6EDF3",
+    "banner": "#58A6FF",
+    "border": {
+      "visible": true,
+      "color": "#30363D"
+    },
+    "prompt": {
+      "default": "#8B949E",
+      "user": "#7EE787",
+      "host": "#79C0FF",
+      "input": "#E6EDF3"
+    },
+    "link": {
+      "text": "#58A6FF",
+      "highlightColor": "#1F6FEB",
+      "highlightText": "#FFFFFF"
+    },
+    "commands": {
+      "textColor": "#A5D6FF"
+    }
+  }
+}
