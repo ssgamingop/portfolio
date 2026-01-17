@@ -3,9 +3,9 @@ import command from '../config.json';
 (() => {
   const style = document.createElement('style')
   const head = document.head
-  const background = `body {background: ${command.colors.background}}`
+  const background = `html {background: ${command.colors.background}}`
   const foreground = `body {color: ${command.colors.foreground}}`
-  const inputBackground = `input {background: ${command.colors.background}}`
+  const inputBackground = `input {background: transparent}`
   const inputForeground = `input {color: ${command.colors.prompt.input}}`
   const outputColor = `.output {color: ${command.colors.prompt.input}}`
   const preHost = `#pre-host {color: ${command.colors.prompt.host}}`

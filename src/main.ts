@@ -29,10 +29,12 @@ const PRE_USER = document.getElementById("pre-user");
 const HOST = document.getElementById("host");
 const USER = document.getElementById("user");
 const PROMPT = document.getElementById("prompt");
-const COMMANDS = ["help", "about", "projects", "whoami", "education", "skills", "repo", "banner", "clear"];
+const COMMANDS = ["help", "about", "projects", "whoami", "education", "skills", "banner", "clear", "resume", "linkedin", "github", "email", "ls", "sudo", "rm -rf", "repo"];
 const HISTORY: string[] = [];
 const SUDO_PASSWORD = command.password;
 const REPO_LINK = command.repoLink;
+const RESUME_LINK = command.resume;
+const SOCIAL = command.social;
 
 const scrollToBottom = () => {
   const MAIN = document.getElementById("main");
@@ -245,14 +247,29 @@ function commandHandler(input: string) {
         window.open(REPO_LINK, '_blank');
       }, 500);
       break;
+    case 'resume':
+      writeLines(["Opening resume...", "<br>"]);
+      setTimeout(() => {
+        window.open(RESUME_LINK, '_blank');
+      }, 500);
+      break;
     case 'linkedin':
-      //add stuff here
+      writeLines(["Opening LinkedIn...", "<br>"]);
+      setTimeout(() => {
+        window.open(SOCIAL.linkedin, '_blank');
+      }, 500);
       break;
     case 'github':
-      //add stuff here
+      writeLines(["Opening GitHub...", "<br>"]);
+      setTimeout(() => {
+        window.open(SOCIAL.github, '_blank');
+      }, 500);
       break;
     case 'email':
-      //add stuff here
+      writeLines([`mailto:${SOCIAL.email}`, "<br>"]);
+      setTimeout(() => {
+        window.open(`mailto:${SOCIAL.email}`, '_self');
+      }, 500);
       break;
     case 'rm -rf':
       if (bareMode) {

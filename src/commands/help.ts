@@ -17,6 +17,10 @@ const helpObj = {
       "View my work."
     ],
     [
+      "'resume'",
+      "View my resume."
+    ],
+    [
       "'whoami'",
       "Current user."
     ],
