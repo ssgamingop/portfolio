@@ -186,14 +186,49 @@ a:hover {
   margin-top: 4px;
 }
 
+/* Layout Containers */
 .lower-main {
   display: flex;
   flex: 1;
   flex-direction: row;
-  /* Side-by-side terminal and sidebar */
   min-height: 0;
-  /* Critical for nested scroll containers */
   overflow: hidden;
+}
+
+#terminal-layout {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+#content-wrapper {
+  flex: 0 1 auto;
+  /* Grow: 0 (hug content), Shrink: 1 (allow resizing), Basis: auto */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: auto;
+  /* Let it scale with content */
+  min-height: 0;
+  padding-bottom: 5px;
+  /* Spacing before fixed input */
+  min-width: 0;
+
+  /* Hiding scrollbar for WebKit browsers */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hiding scrollbar for Firefox */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#content-wrapper::-webkit-scrollbar {
+  display: none;
 }
 
 #terminal {
@@ -204,6 +239,8 @@ a:hover {
   margin-left: 20px;
   overflow-x: hidden;
   width: 100%;
+  flex-shrink: 0;
+  /* Sticky Input Fix */
 }
 
 .command {
@@ -222,21 +259,6 @@ a:hover {
   font-weight: 400;
 }
 
-/* Sidebar Layout (Desktop Default) */
-#content-wrapper {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  /* Scroll ONLY inside this wrapper */
-  overflow-x: hidden;
-  height: 100%;
-  min-width: 0;
-  scrollbar-width: none;
-  /* Firefox */
-  -ms-overflow-style: none;
-  /* IE */
-}
 
 #content-wrapper::-webkit-scrollbar {
   display: none;
@@ -334,7 +356,8 @@ a:hover {
     padding: 10px;
     height: auto;
     background-color: var(--bg);
-
+    box-sizing: border-box;
+    /* Fixes horizontal overflow */
   }
 
   .action-btn {

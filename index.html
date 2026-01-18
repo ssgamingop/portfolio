@@ -22,14 +22,16 @@
     </div>
 
     <div class="lower-main">
-      <div id="content-wrapper">
-        <br>
-        <div id="terminal">
-          <div>
-            <span id="prompt"><span id="pre-user"></span>@<span id="pre-host"></span>:$ ~ </span>
+      <div id="terminal-layout">
+        <div id="content-wrapper">
+          <br>
+          <div id="terminal">
+            <div>
+              <span id="prompt"><span id="pre-user"></span>@<span id="pre-host"></span>:$ ~ </span>
+            </div>
+            <!-- command output will be inserted before #write-lines-->
+            <a id="write-lines"></a>
           </div>
-          <!-- command output will be inserted before #write-lines-->
-          <a id="write-lines"></a>
         </div>
         <div id="input-line">
           <div>
@@ -42,7 +44,6 @@
                 autocomplete="off" />
             </p>
           </div>
-          <br>
         </div>
       </div>
       <aside id="sidebar">
