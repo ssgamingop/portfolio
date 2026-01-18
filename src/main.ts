@@ -39,10 +39,9 @@ const RESUME_LINK = command.resume;
 const SOCIAL = command.social;
 
 const scrollToBottom = () => {
-  const MAIN = document.getElementById("main");
-  if (!MAIN) return
-
-  MAIN.scrollTop = MAIN.scrollHeight;
+  const HEADER = document.getElementById("content-wrapper");
+  if (!HEADER) return
+  HEADER.scrollTop = HEADER.scrollHeight;
 }
 
 function userInputHandler(e: KeyboardEvent) {
@@ -214,7 +213,7 @@ function commandHandler(input: string) {
       break;
     case 'banner':
       if (bareMode) {
-        writeLines(["WebShell v1.0.0", "<br>"])
+        writeLines(["Welcome to Webterm v1.0.0", "<br>"])
         break;
       }
       writeLines(BANNER);
@@ -457,13 +456,19 @@ const initEventListeners = () => {
       } else if (cmd) {
         runCommand(cmd);
       }
+      return; // Stop here, do not focus input
     }
     if (target.classList.contains('clickable')) {
       const cmd = target.getAttribute('data-command');
       if (cmd) {
         runCommand(cmd);
       }
+      return; // Stop here, do not focus input
     }
+
+    // Only focus if clicking elsewhere (like the terminal background) or specifically the input line
+    // Just blindly focusing might be annoying if selecting text, but on mobile it's key.
+    // Let's assume user wants to type if they click the background.
     USERINPUT.focus();
   });
 

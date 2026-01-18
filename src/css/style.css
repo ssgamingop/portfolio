@@ -232,6 +232,15 @@ a:hover {
   overflow-x: hidden;
   height: 100%;
   min-width: 0;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE */
+}
+
+#content-wrapper::-webkit-scrollbar {
+  display: none;
+  /* Chrome Safari */
 }
 
 #sidebar {

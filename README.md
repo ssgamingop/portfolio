@@ -1,4 +1,4 @@
-# Somyajeet Singh | AI & ML Portfolio
+# Somyajeet# Webterm - A Terminal Portfolio
 
 <div align="center">
   <img alt="banner" src="res/banner.png">
