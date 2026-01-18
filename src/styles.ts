@@ -1,57 +1,77 @@
-import command from '../config.json';
+import { builtInThemes } from './commands/themes';
 
-(() => {
-  const style = document.createElement('style')
-  const head = document.head
-  const background = `html {background: ${command.colors.background}}`
-  const foreground = `body {color: ${command.colors.foreground}}`
-  const inputBackground = `input {background: transparent}`
-  const inputForeground = `input {color: ${command.colors.prompt.input}}`
-  const outputColor = `.output {color: ${command.colors.prompt.input}}`
-  const preHost = `#pre-host {color: ${command.colors.prompt.host}}`
-  const host = `#host {color: ${command.colors.prompt.host}}`
-  const preUser = `#pre-user {color: ${command.colors.prompt.user}}`
-  const user = `#user {color: ${command.colors.prompt.user}}`
-  const prompt = `#prompt {color: ${command.colors.prompt.default}}`
-  const banner = `pre {color: ${command.colors.banner}}`
-  const link = `a {color: ${command.colors.link.text}}`
-  const linkHighlight = `a:hover {background: ${command.colors.link.highlightColor}}`
-  const linkTextHighlight = `a:hover {color: ${command.colors.link.highlightText}}`
-  const commandHighlight = `.command {color: ${command.colors.commands.textColor}}`
-  const keys = `.keys {color: ${command.colors.banner}}`
+let styleElement: HTMLStyleElement | null = null;
 
-  head.appendChild(style)
-
-
-  if (!style.sheet) return
-
-  if (!command.colors.border.visible) {
-    style.sheet.insertRule("#bars {display: none}")
-    style.sheet.insertRule("main {border: none}")
-  } else {
-    style.sheet.insertRule(`#bars {background: ${command.colors.background}}`)
-    style.sheet.insertRule(`main {border-color: ${command.colors.border.color}}`)
-    style.sheet.insertRule(`#bar-1 {background: ${command.colors.border.color}; color: ${command.colors.background}}`)
-    style.sheet.insertRule(`#bar-2 {background: ${command.colors.border.color}}`)
-    style.sheet.insertRule(`#bar-3 {background: ${command.colors.border.color}}`)
-    style.sheet.insertRule(`#bar-4 {background: ${command.colors.border.color}}`)
-    style.sheet.insertRule(`#bar-5 {background: ${command.colors.border.color}}`)
+export const setTheme = (colors: any) => {
+  if (!styleElement) {
+    styleElement = document.createElement('style');
+    document.head.appendChild(styleElement);
   }
 
-  style.sheet.insertRule(background)
-  style.sheet.insertRule(foreground)
-  style.sheet.insertRule(inputBackground)
-  style.sheet.insertRule(inputForeground)
-  style.sheet.insertRule(outputColor)
-  style.sheet.insertRule(preHost)
-  style.sheet.insertRule(host)
-  style.sheet.insertRule(preUser)
-  style.sheet.insertRule(user)
-  style.sheet.insertRule(prompt)
-  style.sheet.insertRule(banner)
-  style.sheet.insertRule(link)
-  style.sheet.insertRule(linkHighlight)
-  style.sheet.insertRule(linkTextHighlight)
-  style.sheet.insertRule(commandHighlight)
-  style.sheet.insertRule(keys)
-})()
+  const sheet = styleElement.sheet;
+  if (!sheet) return;
+
+  // Clear existing rules
+  while (sheet.cssRules.length > 0) {
+    sheet.deleteRule(0);
+  }
+
+  const background = `html {background: ${colors.background}}`
+  const foreground = `body {color: ${colors.foreground}}`
+  const inputBackground = `input {background: transparent}`
+  const inputForeground = `input {color: ${colors.prompt.input}}`
+  const outputColor = `.output {color: ${colors.prompt.input}}`
+  const preHost = `#pre-host {color: ${colors.prompt.host}}`
+  const host = `#host {color: ${colors.prompt.host}}`
+  const preUser = `#pre-user {color: ${colors.prompt.user}}`
+  const user = `#user {color: ${colors.prompt.user}}`
+  const prompt = `#prompt {color: ${colors.prompt.default}}`
+  const banner = `pre {color: ${colors.banner}}`
+  const link = `a {color: ${colors.link.text}}`
+  const linkHighlight = `a:hover {background: ${colors.link.highlightColor}}`
+  const linkTextHighlight = `a:hover {color: ${colors.link.highlightText}}`
+  const commandHighlight = `.command {color: ${colors.commands.textColor}}`
+  const keys = `.keys {color: ${colors.banner}}`
+  const scrollbar = `::-webkit-scrollbar-thumb {background: ${colors.banner}}`
+
+  if (!colors.border.visible) {
+    sheet.insertRule("#bars {display: none}", sheet.cssRules.length)
+    sheet.insertRule("main {border: none}", sheet.cssRules.length)
+  } else {
+    // Need to handle display:block if it was hidden before? 
+    // Simplified: we just insert rules. CSS specificity handles the rest usually, 
+    // but here we are rewriting all rules on a fresh style tag/cleared sheet 
+    // so we should be careful about 'display: none'.
+    // Actually, if we clear rules, the default CSS styles apply. 
+    // Check main.css/style.css for #bars default display.
+
+    sheet.insertRule(`#bars {display: block; background: ${colors.background}}`, sheet.cssRules.length)
+    sheet.insertRule(`main {border: 2px solid ${colors.border.color}}`, sheet.cssRules.length)
+    sheet.insertRule(`#bar-1 {background: ${colors.border.color}; color: ${colors.background}}`, sheet.cssRules.length)
+    sheet.insertRule(`#bar-2 {background: ${colors.border.color}}`, sheet.cssRules.length)
+    sheet.insertRule(`#bar-3 {background: ${colors.border.color}}`, sheet.cssRules.length)
+    sheet.insertRule(`#bar-4 {background: ${colors.border.color}}`, sheet.cssRules.length)
+    sheet.insertRule(`#bar-5 {background: ${colors.border.color}}`, sheet.cssRules.length)
+  }
+
+  sheet.insertRule(background, sheet.cssRules.length)
+  sheet.insertRule(foreground, sheet.cssRules.length)
+  sheet.insertRule(inputBackground, sheet.cssRules.length)
+  sheet.insertRule(inputForeground, sheet.cssRules.length)
+  sheet.insertRule(outputColor, sheet.cssRules.length)
+  sheet.insertRule(preHost, sheet.cssRules.length)
+  sheet.insertRule(host, sheet.cssRules.length)
+  sheet.insertRule(preUser, sheet.cssRules.length)
+  sheet.insertRule(user, sheet.cssRules.length)
+  sheet.insertRule(prompt, sheet.cssRules.length)
+  sheet.insertRule(banner, sheet.cssRules.length)
+  sheet.insertRule(link, sheet.cssRules.length)
+  sheet.insertRule(linkHighlight, sheet.cssRules.length)
+  sheet.insertRule(linkTextHighlight, sheet.cssRules.length)
+  sheet.insertRule(commandHighlight, sheet.cssRules.length)
+  sheet.insertRule(keys, sheet.cssRules.length)
+  sheet.insertRule(scrollbar, sheet.cssRules.length)
+}
+
+// Initial set
+setTheme(builtInThemes.default);

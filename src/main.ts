@@ -6,6 +6,8 @@ import { PROJECTS } from "./commands/projects";
 import { EDUCATION } from "./commands/education";
 import { SKILLS } from "./commands/skills";
 import { createWhoami } from "./commands/whoami";
+import { setTheme } from "./styles";
+import { builtInThemes, THEME_HELP } from "./commands/themes";
 
 //mutWriteLines gets deleted and reassigned
 let mutWriteLines = document.getElementById("write-lines");
@@ -29,7 +31,7 @@ const PRE_USER = document.getElementById("pre-user");
 const HOST = document.getElementById("host");
 const USER = document.getElementById("user");
 const PROMPT = document.getElementById("prompt");
-const COMMANDS = ["help", "about", "projects", "whoami", "education", "skills", "banner", "clear", "resume", "linkedin", "github", "email", "ls", "sudo", "rm -rf", "repo"];
+const COMMANDS = ["help", "about", "projects", "whoami", "education", "skills", "banner", "clear", "resume", "linkedin", "github", "email", "ls", "sudo", "rm -rf", "repo", "theme"];
 const HISTORY: string[] = [];
 const SUDO_PASSWORD = command.password;
 const REPO_LINK = command.repoLink;
@@ -181,6 +183,24 @@ function commandHandler(input: string) {
       writeLines(["Permission not granted.", "<br>"]);
     }
     return
+  }
+
+  if (input.startsWith("theme")) {
+    const args = input.trim().split(/\s+/);
+    if (args[0] === "theme") {
+      if (args.length === 1) {
+        writeLines(THEME_HELP);
+      } else {
+        const themeName = args[1];
+        if (builtInThemes[themeName]) {
+          setTheme(builtInThemes[themeName]);
+          writeLines([`Theme switched to ${themeName}`, "<br>"]);
+        } else {
+          writeLines([`Theme '${themeName}' not found.`, "<br>", ...THEME_HELP]);
+        }
+      }
+      return;
+    }
   }
 
   switch (input) {

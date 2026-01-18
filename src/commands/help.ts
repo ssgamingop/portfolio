@@ -37,6 +37,10 @@ const helpObj = {
     [
       "'clear'",
       "Clear the terminal."
+    ],
+    [
+      "'theme'",
+      "Change the color theme."
     ]
   ],
 }
