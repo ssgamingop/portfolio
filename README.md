@@ -1,5 +1,4 @@
-# Somyajeet# Webterm - A Terminal Portfolio
-
+# Webterm - Somyajeet Singh
 <div align="center">
   <img alt="banner" src="res/banner.png">
 </div>
@@ -10,10 +9,15 @@
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
-Terminal-style portfolio website for Somyajeet Singh, showcasing projects in AI, ML, and Creative Systems.
-
+Terminal-style portfolio website for Somyajeet Singh, showcasing projects in AI, ML, and Creative Systems. Note: This project has been rebranded from **Webshell** to **Webterm**.
 
 ## Features
+* **Interactive Terminal**: Type commands like a pro.
+* **sidebar GUI**: Rapid navigation buttons on the right for About, Projects, Education, etc.
+* **Random Theme**: Click 'THEME' to instantly cycle through available color schemes.
+* **Mobile Optimized**:
+    * **Calculated Scroll**: Autos-scrolls to keep your input visible.
+    * **Click-to-Type**: Tap the terminal background to bring up the keyboard (prevents auto-popup annoyance).
 * **[Tab]** for auto completion.
 * **[Esc]** to clear the input line.
 * **[↑][↓]** to scroll through your command history.
