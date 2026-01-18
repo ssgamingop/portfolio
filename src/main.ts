@@ -446,11 +446,45 @@ const initEventListeners = () => {
   USERINPUT.addEventListener('keydown', userInputHandler);
   PASSWORD_INPUT.addEventListener('keypress', userInputHandler);
 
-  window.addEventListener('click', () => {
+  window.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.tagName === 'BUTTON' && target.classList.contains('action-btn')) {
+      const cmd = target.getAttribute('data-cmd');
+      if (cmd === 'theme-random') {
+        const themes = Object.keys(builtInThemes);
+        const randomTheme = themes[Math.floor(Math.random() * themes.length)];
+        runCommand(`theme ${randomTheme}`);
+      } else if (cmd) {
+        runCommand(cmd);
+      }
+    }
+    if (target.classList.contains('clickable')) {
+      const cmd = target.getAttribute('data-command');
+      if (cmd) {
+        runCommand(cmd);
+      }
+    }
     USERINPUT.focus();
   });
 
   console.log(`%cPassword: ${command.password}`, "color: red; font-size: 20px;");
+}
+
+function runCommand(cmd: string) {
+  const resetInput = "";
+  // userInput = cmd; // Removing this because it messes with history
+  // HISTORY.push(userInput); // Optional: add clicked commands to history? Maybe not for "GUI" feel.
+
+  // Display the command as if typed
+  const div = document.createElement("div");
+  div.innerHTML = `<span id="prompt">${PROMPT?.innerHTML}</span> <span class='output'>${cmd}</span>`;
+
+  if (mutWriteLines && mutWriteLines.parentNode) {
+    mutWriteLines.parentNode.insertBefore(div, mutWriteLines);
+  }
+
+  commandHandler(cmd.toLowerCase().trim());
+  USERINPUT.value = resetInput;
 }
 
 initEventListeners();

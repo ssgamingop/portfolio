@@ -78,11 +78,12 @@ body::after {
 }
 
 main {
-  display: block;
+  display: flex;
   box-sizing: border-box;
   height: 100%;
   border: var(--border) solid 2px;
   border-radius: 2px;
+  overflow: hidden;
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: none;
@@ -209,6 +210,58 @@ a:hover {
   font-weight: 400;
 }
 
+/* Sidebar Layout (Desktop Default) */
+#content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+  min-width: 0;
+}
+
+#sidebar {
+  width: 220px;
+  padding: 20px;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-left: 2px solid var(--border);
+  background-color: transparent;
+  flex-shrink: 0;
+}
+
+.action-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px;
+  cursor: pointer;
+  font-family: 'IBM Plex Mono', monospace;
+  transition: all 0.2s;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.action-btn:hover {
+  background-color: var(--border);
+  color: var(--bg);
+}
+
+.clickable {
+  cursor: pointer;
+  border-bottom: 1px dashed var(--prompt-default);
+}
+
+.clickable:hover {
+  color: var(--prompt-user);
+  border-bottom-style: solid;
+}
+
+/* Mobile Responsive */
 @media (max-width: 600px) {
   body {
     font-size: 10px;
@@ -231,17 +284,36 @@ a:hover {
 
   main {
     border-width: 1px;
+    flex-direction: column;
   }
 
   div {
     line-height: 14px;
   }
 
-  #terminal {
+  #terminal,
+  #input-line {
     margin-left: 8px;
   }
 
-  #input-line {
-    margin-left: 8px;
+  /* Sidebar Mobile Overrides */
+  #sidebar {
+    width: 100%;
+    border-left: none;
+    border-top: 2px solid var(--border);
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+    padding-top: 10px;
+    height: auto;
+    background-color: var(--bg);
+   
+  }
+
+  .action-btn {
+    flex: 1;
+    padding: 5px;
+    font-size: 10px;
+    min-width: 70px;
   }
 }

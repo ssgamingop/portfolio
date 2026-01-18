@@ -13,34 +13,44 @@
 
 <body>
   <main id="main">
-    <div id="bars">
-      <div id="bar-1">Somyajeet System</div>
-      <div id="bar-2"></div>
-      <div id="bar-3"></div>
-      <div id="bar-4"></div>
-      <div id="bar-5"></div>
-    </div>
-    <br>
-    <div id="terminal">
-      <div>
-        <span id="prompt"><span id="pre-user"></span>@<span id="pre-host"></span>:$ ~ </span>
-      </div>
-      <!-- command output will be inserted before #write-lines-->
-      <a id="write-lines"></a>
-    </div>
-    <div id="input-line">
-      <div>
-        <p id="password-input" style="display: none;">Password: <input id="password-field" autocomplete="off"
-            type="password" /></p>
-        <p id="input-hidden">
-          <span id="prompt"><span id="user"></span>@<span id="host"></span>:$ ~
-          </span>
-          <input id="user-input" type="text" enterkeyhint="Enter" spellcheck="false" autocapitalize="none"
-            autocomplete="off" />
-        </p>
+    <div id="content-wrapper">
+      <div id="bars">
+        <div id="bar-1">Somyajeet System</div>
+        <div id="bar-2"></div>
+        <div id="bar-3"></div>
+        <div id="bar-4"></div>
+        <div id="bar-5"></div>
       </div>
       <br>
+      <div id="terminal">
+        <div>
+          <span id="prompt"><span id="pre-user"></span>@<span id="pre-host"></span>:$ ~ </span>
+        </div>
+        <!-- command output will be inserted before #write-lines-->
+        <a id="write-lines"></a>
+      </div>
+      <div id="input-line">
+        <div>
+          <p id="password-input" style="display: none;">Password: <input id="password-field" autocomplete="off"
+              type="password" /></p>
+          <p id="input-hidden">
+            <span id="prompt"><span id="user"></span>@<span id="host"></span>:$ ~
+            </span>
+            <input id="user-input" type="text" enterkeyhint="Enter" spellcheck="false" autocapitalize="none"
+              autocomplete="off" />
+          </p>
+        </div>
+        <br>
+      </div>
     </div>
+    <aside id="sidebar">
+      <button class="action-btn" data-cmd="about">ABOUT</button>
+      <button class="action-btn" data-cmd="skills">SKILLS</button>
+      <button class="action-btn" data-cmd="projects">PROJECTS</button>
+      <button class="action-btn" data-cmd="education">EDUCATION</button>
+      <button class="action-btn" data-cmd="email">CONTACT</button>
+      <button class="action-btn" data-cmd="theme-random">THEME</button>
+    </aside>
   </main>
 </body>
 

@@ -53,7 +53,9 @@ const createHelp = (): string[] => {
     const SPACE = "&nbsp;";
     let string = "";
     string += SPACE.repeat(2);
-    string += "<span class='command'>";
+    // Extract clean command name (remove quotes)
+    const cmdName = ele[0].replace(/'/g, "");
+    string += `<span class='command clickable' data-command='${cmdName}'>`;
     string += ele[0];
     string += "</span>";
     string += SPACE.repeat(17 - ele[0].length);

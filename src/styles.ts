@@ -71,6 +71,16 @@ export const setTheme = (colors: any) => {
   sheet.insertRule(commandHighlight, sheet.cssRules.length)
   sheet.insertRule(keys, sheet.cssRules.length)
   sheet.insertRule(scrollbar, sheet.cssRules.length)
+
+  // Sidebar specific styles (Theme Colors only)
+  // Layout is handled in style.css
+  const sidebar = `#sidebar { border-left: none; background: transparent; }`;
+  const actionBtn = `.action-btn { color: ${colors.prompt.default}; border: 1px solid ${colors.border.color}; }`;
+  const actionBtnHover = `.action-btn:hover { background: ${colors.border.color}; color: ${colors.background} }`;
+
+  sheet.insertRule(sidebar, sheet.cssRules.length);
+  sheet.insertRule(actionBtn, sheet.cssRules.length);
+  sheet.insertRule(actionBtnHover, sheet.cssRules.length);
 }
 
 // Initial set
