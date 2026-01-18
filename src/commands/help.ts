@@ -58,7 +58,7 @@ const createHelp = (): string[] => {
     string += `<span class='command clickable' data-command='${cmdName}'>`;
     string += ele[0];
     string += "</span>";
-    string += SPACE.repeat(17 - ele[0].length);
+    string += SPACE.repeat(Math.max(0, 17 - ele[0].length));
     string += ele[1];
     help.push(string);
   })

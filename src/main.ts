@@ -13,7 +13,6 @@ import { builtInThemes, THEME_HELP } from "./commands/themes";
 let mutWriteLines = document.getElementById("write-lines");
 let historyIdx = 0
 let tempInput = ""
-let userInput: string;
 let isSudo = false;
 let isPasswordInput = false;
 let passwordCounter = 0;
@@ -79,9 +78,10 @@ function enterKey() {
   if (!mutWriteLines || !PROMPT) return
   const resetInput = "";
   let newUserInput;
-  userInput = USERINPUT.value;
+  let userInput = USERINPUT.value; // Local variable
 
   if (bareMode) {
+    // ...
     newUserInput = userInput;
   } else {
     newUserInput = `<span class='output'>${userInput}</span>`;
@@ -273,10 +273,7 @@ function commandHandler(input: string) {
       }, 500);
       break;
     case 'linkedin':
-      writeLines(["Opening LinkedIn...", "<br>"]);
-      setTimeout(() => {
-        window.open(SOCIAL.linkedin, '_blank');
-      }, 500);
+      writeLines([`LinkedIn: <a href='${SOCIAL.linkedin}' target='_blank'>${SOCIAL.linkedin}</a>`, "<br>"]);
       break;
     case 'github':
       writeLines(["Opening GitHub...", "<br>"]);
@@ -285,10 +282,7 @@ function commandHandler(input: string) {
       }, 500);
       break;
     case 'email':
-      writeLines([`mailto:${SOCIAL.email}`, "<br>"]);
-      setTimeout(() => {
-        window.open(`mailto:${SOCIAL.email}`, '_self');
-      }, 500);
+      writeLines([`Email: <a href='mailto:${SOCIAL.email}'>${SOCIAL.email}</a>`, "<br>"]);
       break;
     case 'rm -rf':
       if (bareMode) {
@@ -471,6 +465,12 @@ const initEventListeners = () => {
     // Let's assume user wants to type if they click the background.
     USERINPUT.focus();
   });
+
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', () => {
+      scrollToBottom();
+    });
+  }
 
   console.log(`%cPassword: ${command.password}`, "color: red; font-size: 20px;");
 }

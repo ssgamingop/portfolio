@@ -1,7 +1,7 @@
 
 import command from '../../config.json';
 
-interface ThemeColors {
+export interface ThemeColors {
     background: string;
     foreground: string;
     banner: string;

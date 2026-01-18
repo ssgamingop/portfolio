@@ -27,22 +27,22 @@ const createAbout = (): string[] => {
 
   string += SPACE.repeat(2);
   string += email;
-  string += SPACE.repeat(17 - EMAIL.length);
+  string += SPACE.repeat(Math.max(0, 17 - EMAIL.length));
   string += `<a target='_blank' href='mailto:${command.social.email}'>${command.social.email}</a>`;
   about.push(string);
 
   string = '';
   string += SPACE.repeat(2);
   string += github;
-  string += SPACE.repeat(17 - GITHUB.length);
+  string += SPACE.repeat(Math.max(0, 17 - GITHUB.length));
   string += `<a target='_blank' href='${command.social.github}'>${command.social.github}</a>`;
   about.push(string);
 
   string = '';
   string += SPACE.repeat(2);
   string += linkedin;
-  string += SPACE.repeat(17 - LINKEDIN.length);
-  string += `<a target='_blank' href='https://www.linkedin.com/in/${command.social.linkedin}'>linkedin/${command.social.linkedin}</a>`;
+  string += SPACE.repeat(Math.max(0, 17 - LINKEDIN.length));
+  string += `<a target='_blank' href='${command.social.linkedin}'>${command.social.linkedin}</a>`;
   about.push(string);
 
   about.push("<br>");

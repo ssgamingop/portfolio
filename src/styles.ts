@@ -1,8 +1,8 @@
-import { builtInThemes } from './commands/themes';
+import { builtInThemes, ThemeColors } from './commands/themes';
 
 let styleElement: HTMLStyleElement | null = null;
 
-export const setTheme = (colors: any) => {
+export const setTheme = (colors: ThemeColors) => {
   if (!styleElement) {
     styleElement = document.createElement('style');
     document.head.appendChild(styleElement);
