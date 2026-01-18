@@ -79,13 +79,13 @@ body::after {
 
 main {
   display: flex;
+  flex-direction: column;
+  /* Header on top, content below */
   box-sizing: border-box;
   height: 100%;
   border: var(--border) solid 2px;
   border-radius: 2px;
   overflow: hidden;
-  overflow-y: auto;
-  overflow-x: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -141,14 +141,16 @@ a:hover {
   color: var(--bg);
 }
 
+/* Header and Layout Containers */
 #bars {
   font-family: 'Pixelify Sans', sans-serif;
   font-size: 20px;
-  position: -webkit-sticky;
-  position: sticky;
   width: 100%;
-  top: 0;
+  flex-shrink: 0;
+  /* Removed sticky as it's now a flex item at the top */
+  position: relative;
   background-color: var(--bg);
+  z-index: 10;
 }
 
 #bar-1 {
@@ -184,6 +186,16 @@ a:hover {
   margin-top: 4px;
 }
 
+.lower-main {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  /* Side-by-side terminal and sidebar */
+  min-height: 0;
+  /* Critical for nested scroll containers */
+  overflow: hidden;
+}
+
 #terminal {
   margin-left: 20px;
 }
@@ -216,6 +228,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  /* Scroll ONLY inside this wrapper */
   overflow-x: hidden;
   height: 100%;
   min-width: 0;
@@ -223,8 +236,9 @@ a:hover {
 
 #sidebar {
   width: 220px;
-  padding: 20px;
-  padding-top: 50px;
+  padding: 50px;
+  /* Reset top padding as it's now below the header */
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -284,7 +298,7 @@ a:hover {
 
   main {
     border-width: 1px;
-    flex-direction: column;
+    /* Main is already column, that's fine */
   }
 
   div {
@@ -296,6 +310,11 @@ a:hover {
     margin-left: 8px;
   }
 
+  .lower-main {
+    flex-direction: column;
+    /* Stack terminal and sidebar on mobile */
+  }
+
   /* Sidebar Mobile Overrides */
   #sidebar {
     width: 100%;
@@ -304,10 +323,9 @@ a:hover {
     flex-direction: row;
     flex-wrap: wrap;
     padding: 10px;
-    padding-top: 10px;
     height: auto;
     background-color: var(--bg);
-   
+
   }
 
   .action-btn {
