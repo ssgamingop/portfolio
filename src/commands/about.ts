@@ -19,11 +19,14 @@ const createAbout = (): string[] => {
   about.push("<br>");
 
   // Professional Summary
-  about.push("Motivated Computer Science student specializing in Artificial Intelligence and Machine Learning,");
-  about.push("with strong foundations in Python, JavaScript, and problem-solving.");
-  about.push("Passionate about building creative systems, automation pipelines, and interactive applications.");
-  about.push("Actively learning by building real-world projects and experimenting with emerging technologies.");
+  about.push("I work across design and development.");
   about.push("<br>");
+  about.push("I think about layout, interaction, and logic");
+  about.push("as parts of the same system.");
+  about.push("I like having control from idea to implementation.");
+  about.push("<br>");
+  about.push("Most of my learning comes from building,");
+  about.push("experimenting, and refining how things work together.");
 
   string += SPACE.repeat(2);
   string += email;

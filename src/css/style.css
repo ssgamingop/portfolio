@@ -309,17 +309,23 @@ a:hover {
 /* Mobile Responsive */
 @media (max-width: 600px) {
   body {
-    font-size: 10px;
-    padding: 2px;
+    font-size: 13px;
+    /* Increased from 10px for readability */
+    padding: 10px;
+    /* More breathing room */
     font-weight: 300;
   }
 
   input {
-    font-size: 10px;
+    font-size: 16px;
+    /* Prevents auto-zoom on iOS */
+    margin-top: 2px;
+    /* slight alignment fix */
   }
 
   p {
-    line-height: 14px;
+    line-height: 18px;
+    /* Improved line height */
   }
 
   pre {
@@ -362,8 +368,14 @@ a:hover {
 
   .action-btn {
     flex: 1;
-    padding: 5px;
-    font-size: 10px;
+    padding: 12px;
+    /* Larger touch target */
+    font-size: 12px;
     min-width: 70px;
+    min-height: 44px;
+    /* Accessible touch target size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
