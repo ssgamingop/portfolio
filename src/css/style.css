@@ -333,17 +333,13 @@ a:hover {
 @media (max-width: 600px) {
   body {
     font-size: 13px;
-    /* Increased from 10px for readability */
     padding: 10px;
-    /* More breathing room */
     font-weight: 300;
   }
 
   input {
     font-size: 16px;
-    /* Prevents auto-zoom on iOS */
     margin-top: 2px;
-    /* slight alignment fix */
   }
 
   a {
@@ -352,7 +348,10 @@ a:hover {
 
   p {
     line-height: 18px;
-    /* Improved line height */
+    white-space: normal;
+    /* Fixes text overflow */
+    animation: none;
+    /* Disables typing animation (which forces nowrap) for legibility */
   }
 
   pre {
@@ -362,7 +361,6 @@ a:hover {
 
   main {
     border-width: 1px;
-    /* Main is already column, that's fine */
   }
 
   div {
@@ -376,7 +374,6 @@ a:hover {
 
   .lower-main {
     flex-direction: column;
-    /* Stack terminal and sidebar on mobile */
   }
 
   /* Sidebar Mobile Overrides */
@@ -384,25 +381,41 @@ a:hover {
     width: 100%;
     border-left: none;
     border-top: 2px solid var(--border);
-    flex-direction: row;
-    flex-wrap: wrap;
     padding: 10px;
     height: auto;
     background-color: var(--bg);
     box-sizing: border-box;
-    /* Fixes horizontal overflow */
+
+    /* Grid Layout for Perfect Alignment */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  /* Hide the spacer div on mobile so the grid is perfect 4x2 */
+  #sidebar>div {
+    display: none;
   }
 
   .action-btn {
-    flex: 1;
-    padding: 12px;
-    /* Larger touch target */
-    font-size: 12px;
-    min-width: 70px;
+    width: 100%;
+    /* Fill grid cell */
+    padding: 0;
+    font-size: 11px;
     min-height: 44px;
-    /* Accessible touch target size */
+    /* Accessible touch target */
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .small-btn {
+    width: 44px;
+    /* Stay square */
+    height: 44px;
+    margin: 0 auto;
+    /* Center in the grid cell */
+    margin-top: 0;
+    align-self: center;
   }
 }

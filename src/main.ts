@@ -291,6 +291,10 @@ function commandHandler(input: string) {
       }, 500);
       break;
     case 'resume':
+      if (bareMode) {
+        writeLines(["resume not found.", "<br>"])
+        break;
+      }
       writeLines(["Opening resume...", "<br>"]);
       setTimeout(() => {
         window.open(RESUME_LINK, '_blank');

@@ -20,7 +20,7 @@ const createProject = (): string[] => {
 
   command.projects.forEach((ele) => {
     let string = "";
-    let link = `<a href="${ele[2]}" target="_blank">${ele[0]}</a>`
+    let link = `<a href="${ele[2]}" target="_blank">${ele[0]} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>`
     string += SPACE.repeat(2);
     string += link;
     // Ensure repeat count is never negative
