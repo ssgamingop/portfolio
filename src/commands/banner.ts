@@ -2,8 +2,13 @@ import command from '../../config.json';
 
 const createBanner = (): string[] => {
   const banner: string[] = [];
+  const isMobile = window.innerWidth <= 600;
+
+  // Use config.asciiMobile if it exists and we're on mobile, otherwise default to config.ascii
+  const asciiArt = (isMobile && command.asciiMobile) ? command.asciiMobile : command.ascii;
+
   banner.push("<br>")
-  command.ascii.forEach((ele) => {
+  asciiArt.forEach((ele) => {
     let bannerString = "";
     //this is for the ascii art
     for (let i = 0; i < ele.length; i++) {
@@ -25,4 +30,4 @@ const createBanner = (): string[] => {
   return banner;
 }
 
-export const BANNER = createBanner();
+export const getBanner = () => createBanner();

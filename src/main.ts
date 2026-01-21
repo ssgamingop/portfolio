@@ -1,6 +1,6 @@
 import command from '../config.json';
 import { HELP } from "./commands/help";
-import { BANNER } from "./commands/banner";
+import { getBanner } from "./commands/banner";
 import { ABOUT } from "./commands/about"
 import { PROJECTS } from "./commands/projects";
 import { EDUCATION } from "./commands/education";
@@ -8,6 +8,8 @@ import { SKILLS } from "./commands/skills";
 import { createWhoami } from "./commands/whoami";
 import { setTheme } from "./styles";
 import { builtInThemes, THEME_HELP } from "./commands/themes";
+
+
 
 //mutWriteLines gets deleted and reassigned
 let mutWriteLines = document.getElementById("write-lines");
@@ -45,6 +47,28 @@ const scrollToBottom = () => {
 
 function userInputHandler(e: KeyboardEvent) {
   const key = e.key;
+  const ctrl = e.ctrlKey;
+
+  if (ctrl && key === "l") {
+    e.preventDefault();
+    runCommand("clear");
+    return;
+  }
+
+  if (ctrl && key === "c") {
+    e.preventDefault();
+    const currentState = USERINPUT.value;
+    const div = document.createElement("div");
+    div.innerHTML = `<span id="prompt">${PROMPT?.innerHTML}</span> <span class='output'>${currentState}^C</span>`;
+
+    if (mutWriteLines && mutWriteLines.parentNode) {
+      mutWriteLines.parentNode.insertBefore(div, mutWriteLines);
+    }
+
+    USERINPUT.value = "";
+    scrollToBottom();
+    return;
+  }
 
   switch (key) {
     case "Enter":
@@ -216,7 +240,7 @@ function commandHandler(input: string) {
         writeLines(["Welcome to Webterm v1.0.0", "<br>"])
         break;
       }
-      writeLines(BANNER);
+      writeLines(getBanner());
       break;
     case 'help':
       if (bareMode) {
@@ -432,7 +456,7 @@ const initEventListeners = () => {
   }
 
   window.addEventListener('load', () => {
-    writeLines(BANNER);
+    writeLines(getBanner());
   });
 
   USERINPUT.addEventListener('keypress', userInputHandler);
@@ -477,18 +501,20 @@ const initEventListeners = () => {
 
 function runCommand(cmd: string) {
   const resetInput = "";
-  // userInput = cmd; // Removing this because it messes with history
-  // HISTORY.push(userInput); // Optional: add clicked commands to history? Maybe not for "GUI" feel.
 
-  // Display the command as if typed
-  const div = document.createElement("div");
-  div.innerHTML = `<span id="prompt">${PROMPT?.innerHTML}</span> <span class='output'>${cmd}</span>`;
+  // Create an animated system message: "Executing: <cmd>..."
+  const p = document.createElement("p");
+  p.innerHTML = `<span class="keys">Executing:</span> ${cmd}...`;
 
   if (mutWriteLines && mutWriteLines.parentNode) {
-    mutWriteLines.parentNode.insertBefore(div, mutWriteLines);
+    mutWriteLines.parentNode.insertBefore(p, mutWriteLines);
   }
 
-  commandHandler(cmd.toLowerCase().trim());
+  // Slight delay to allow the "Executing" animation to start/finish before dumping output
+  setTimeout(() => {
+    commandHandler(cmd.toLowerCase().trim());
+  }, 200);
+
   USERINPUT.value = resetInput;
 }
 

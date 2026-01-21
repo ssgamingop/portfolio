@@ -306,6 +306,29 @@ a:hover {
   border-bottom-style: solid;
 }
 
+.small-btn {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  font-size: 16px;
+  opacity: 0.6;
+  border-style: dashed;
+  align-self: flex-end;
+  /* Align to the right in the sidebar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.small-btn:hover {
+  opacity: 1;
+  border-style: solid;
+  color: #ff7b72;
+  /* Red hover for delete action */
+  border-color: #ff7b72;
+}
+
 /* Mobile Responsive */
 @media (max-width: 600px) {
   body {
@@ -321,6 +344,10 @@ a:hover {
     /* Prevents auto-zoom on iOS */
     margin-top: 2px;
     /* slight alignment fix */
+  }
+
+  a {
+    word-break: break-all;
   }
 
   p {

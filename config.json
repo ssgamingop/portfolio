@@ -7,6 +7,14 @@
     "███████║╚██████╔╝██║ ╚═╝ ██║   ██║   ██║  ██║╚█████╔╝███████╗███████╗   ██║   ",
     "╚══════╝ ╚═════╝ ╚═╝     ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚════╝ ╚══════╝╚══════╝   ╚═╝"
   ],
+  "asciiMobile": [
+    "  ███████╗███████╗",
+    "  ██╔════╝██╔════╝",
+    "  ███████╗███████╗",
+    "  ╚════██║╚════██║",
+    "  ███████║███████║",
+    "  ╚══════╝╚══════╝"
+  ],
   "title": "Somyajeet Singh | AI & ML Engineer",
   "username": "somyajeet",
   "hostname": "somya15@",
@@ -60,9 +68,9 @@
   },
   "projects": [
     [
-      "AI Automation Workflow System",
-      "Pipeline to generate content ideas, scripts, and assets using Python and JS.",
-      "https://github.com/ssgamingop"
+      "Music Visualizer using Python",
+      "imple audio visualizer made in Python. It plays .wav files and shows cool effects",
+      "https://github.com/ssgamingop/ss-music-visualizer"
     ],
     [
       "AR-Based Interactive Projects",
@@ -70,7 +78,7 @@
       "https://github.com/ssgamingop/kit_making"
     ],
     [
-      "Sur Sangam - AI Music Generation Platform",
+      "Sur Sangam - Music Generator",
       "AI to generate Hindi lyrics, compose music, and suggest improvements with browser-based persistent storage.",
       "https://github.com/ssgamingop/sur_sangam"
     ]

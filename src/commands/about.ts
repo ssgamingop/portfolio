@@ -27,6 +27,7 @@ const createAbout = (): string[] => {
   about.push("<br>");
   about.push("Most of my learning comes from building,");
   about.push("experimenting, and refining how things work together.");
+  about.push("<br>");
 
   string += SPACE.repeat(2);
   string += email;
