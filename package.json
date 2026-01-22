@@ -1,7 +1,8 @@
 {
   "name": "somyajeet-portfolio",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "description": "Terminal-style portfolio website with resizable windows, gallery, and PDF viewer.",
   "type": "module",
   "scripts": {
     "dev": "vite",

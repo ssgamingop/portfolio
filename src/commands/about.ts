@@ -21,12 +21,11 @@ const createAbout = (): string[] => {
   // Professional Summary
   about.push("I work across design and development.");
   about.push("<br>");
-  about.push("I think about layout, interaction, and logic");
-  about.push("as parts of the same system.");
+  about.push("I think about layout, interaction, and logic as parts of the same system.");
   about.push("I like having control from idea to implementation.");
   about.push("<br>");
-  about.push("Most of my learning comes from building,");
-  about.push("experimenting, and refining how things work together.");
+  about.push("Most of my learning comes from building, experimenting, ");
+  about.push("and refining how things work together.");
   about.push("<br>");
 
   string += SPACE.repeat(2);

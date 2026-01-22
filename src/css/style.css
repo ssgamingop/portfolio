@@ -244,9 +244,7 @@ a:hover {
 }
 
 .command {
-  text-shadow:
-    0 0 7px #fff,
-    0 0 151px var(--border);
+  /* text-shadow removed */
   color: #FD9BDB;
 }
 

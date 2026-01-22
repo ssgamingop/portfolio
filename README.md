@@ -13,14 +13,20 @@ Terminal-style portfolio website for Somyajeet Singh, showcasing projects in AI,
 
 ## Features
 * **Interactive Terminal**: Type commands like a pro.
-* **sidebar GUI**: Rapid navigation buttons on the right for About, Projects, Education, etc.
-* **Random Theme**: Click 'THEME' to instantly cycle through available color schemes.
+* **Window Manager**: 
+    * **Resizable Windows**: Drag the bottom-right corner to resize.
+    * **Draggable**: Move windows anywhere on your desktop.
+* **Project Explorer**: Visual grid layout for browsing projects (Desktop default).
+* **Project Gallery**: Sliding carousel supporting images and videos.
+* **PDF Viewer**: Integrated resume viewer with download option.
+* **Sidebar GUI**: Rapid navigation buttons on the right.
+* **Themes**: Cycle through color schemes with `theme` command.
 * **Mobile Optimized**:
-    * **Calculated Scroll**: Autos-scrolls to keep your input visible.
-    * **Click-to-Type**: Tap the terminal background to bring up the keyboard (prevents auto-popup annoyance).
+    * **Calculated Scroll**: Auto-scrolls to keep input visible.
+    * **Click-to-Type**: Tap terminal background to focus input.
 * **[Tab]** for auto completion.
 * **[Esc]** to clear the input line.
-* **[↑][↓]** to scroll through your command history.
+* **[↑][↓]** to scroll through command history.
 
 ## Commands
 * `help`: List all available commands.
@@ -31,7 +37,7 @@ Terminal-style portfolio website for Somyajeet Singh, showcasing projects in AI,
 * `skills`: View technical skills.
 * `banner`: Display the startup banner.
 * `clear`: Clear the terminal screen.
-* `resume`: Open resume in a new tab.
+* `resume`: Open resume in a dedicated PDF viewer window.
 * `linkedin`: Open LinkedIn profile.
 * `github`: Open GitHub profile.
 * `email`: Open default email client.

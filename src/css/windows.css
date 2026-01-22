@@ -1,0 +1,171 @@
+#window-container {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.desktop-window {
+    position: absolute;
+    width: 700px;
+    height: 480px;
+
+    /* Terminal Aesthetic: Darker, sharper, minimal blur */
+    background: rgba(13, 17, 23, 0.95);
+    /* Nearly opaque */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    /* Sharp Borders */
+    border: 1px solid #30363D;
+    border-radius: 0;
+
+    /* Terminal Shadow */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+
+    display: flex;
+    flex-direction: column;
+    pointer-events: auto;
+    font-family: 'IBM Plex Mono', monospace;
+    overflow: hidden;
+    user-select: none;
+
+    /* Quick Snap Animation */
+    animation: openWindow 0.15s ease-out;
+    will-change: transform, opacity;
+}
+
+.desktop-window.is-active {
+    border-color: #58A6FF;
+    box-shadow: 0 0 0 1px #58A6FF, 0 10px 30px rgba(0, 0, 0, 0.9);
+    z-index: 1001;
+}
+
+@keyframes openWindow {
+    from {
+        transform: scale(0.95) translateY(10px);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.window-title-bar {
+    height: 36px;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    cursor: grab;
+    user-select: none;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.window-title-bar:active {
+    cursor: grabbing;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.window-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.win-btn {
+    border: none;
+    background: none;
+    color: #8B949E;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 2px;
+}
+
+.win-btn:hover {
+    background: #30363D;
+    color: #ffffff;
+}
+
+.close-btn:hover {
+    background: #DA3633;
+    color: #ffffff;
+}
+
+.window-content {
+    flex: 1;
+    padding: 0;
+    overflow: hidden;
+    /* Fix: scroll handled by children (explorer grid, iframe) */
+    background: rgba(0, 0, 0, 0.2);
+    color: #E6EDF3;
+    position: relative;
+    user-select: text;
+}
+
+.window-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.window-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.window-content::-webkit-scrollbar-track {
+    background: #0d1117;
+}
+
+.window-content::-webkit-scrollbar-thumb {
+    background: #30363D;
+    border-radius: 4px;
+}
+
+.window-content::-webkit-scrollbar-thumb:hover {
+    background: #58A6FF;
+}
+
+@media (max-width: 600px) {
+    #window-container {
+        display: none;
+    }
+}
+
+/* Resize Handle */
+.resize-handle {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    cursor: nwse-resize;
+    z-index: 10;
+}
+
+/* Visual Grip for resize handle (optional, using CSS triangles) */
+.resize-handle::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 10px 10px;
+    border-color: transparent transparent rgba(255, 255, 255, 0.3) transparent;
+}
+
+.resize-handle:hover::after {
+    border-color: transparent transparent rgba(255, 255, 255, 0.6) transparent;
+}

@@ -1,13 +1,171 @@
 import command from '../config.json';
+import './css/explorer.css';
+import { escapeHTML } from './utils';
 import { HELP } from "./commands/help";
 import { getBanner } from "./commands/banner";
 import { ABOUT } from "./commands/about"
-import { PROJECTS } from "./commands/projects";
+import { PROJECTS, createProject } from "./commands/projects";
 import { EDUCATION } from "./commands/education";
 import { SKILLS } from "./commands/skills";
 import { createWhoami } from "./commands/whoami";
 import { setTheme } from "./styles";
 import { builtInThemes, THEME_HELP } from "./commands/themes";
+import { WindowManager } from './windowManager';
+
+const windowManager = new WindowManager();
+
+// Expose to window for inline onclicks
+(window as any).openProjectWindow = (title: string, link: string, videoUrl?: string, screenshots?: string[]) => {
+  // Security Check: Ensure link is HTTPS
+  if (link && !link.startsWith("https://")) {
+    console.error("Blocked insecure or invalid link:", link);
+    return;
+  }
+
+  if (window.innerWidth <= 600) {
+    window.open(link, '_blank');
+    return;
+  }
+
+  // Collect all media items: Video first, then screenshots
+  const mediaItems: { type: 'video' | 'image', src: string }[] = [];
+
+  if (videoUrl) {
+    mediaItems.push({ type: 'video', src: videoUrl });
+  }
+
+  if (screenshots && Array.isArray(screenshots)) {
+    screenshots.forEach(src => {
+      const isVideo = src.toLowerCase().endsWith('.mp4') || src.toLowerCase().endsWith('.webm');
+      mediaItems.push({
+        type: isVideo ? 'video' : 'image',
+        src
+      });
+    });
+  }
+
+  // If no visual media, fallback to iframe
+  if (mediaItems.length === 0) {
+    const iframeValue = document.createElement("iframe");
+    iframeValue.src = link;
+    iframeValue.style.width = "100%";
+    iframeValue.style.height = "100%";
+    iframeValue.style.border = "none";
+    windowManager.open(`proj-${title}`, title, iframeValue);
+    return;
+  }
+
+  // Create Gallery Container
+  const galleryContainer = document.createElement("div");
+  galleryContainer.className = "gallery-container";
+
+  // Create Slides
+  mediaItems.forEach((item, index) => {
+    let element: HTMLElement;
+    if (item.type === 'video') {
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.className = "gallery-slide";
+      video.controls = true;
+      // video.autoplay = true; // Auto-play only active slide? Complex. Let user play.
+      video.loop = true;
+      element = video;
+    } else {
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.className = "gallery-slide";
+      element = img;
+    }
+
+    if (index === 0) element.classList.add('active');
+    galleryContainer.appendChild(element);
+  });
+
+  // Navigation Logic
+  let currentIndex = 0;
+
+  const showSlide = (index: number) => {
+    const slides = galleryContainer.querySelectorAll('.gallery-slide');
+    slides.forEach((slide, i) => {
+      if (i === index) {
+        slide.classList.add('active');
+        if (slide instanceof HTMLVideoElement) {
+          // Optional: slide.play(); 
+        }
+      } else {
+        slide.classList.remove('active');
+        if (slide instanceof HTMLVideoElement) {
+          slide.pause();
+        }
+      }
+    });
+  };
+
+  const nextSlide = () => {
+    currentIndex = (currentIndex + 1) % mediaItems.length;
+    showSlide(currentIndex);
+  };
+
+  const prevSlide = () => {
+    currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
+    showSlide(currentIndex);
+  };
+
+  // Buttons (Only if > 1 item)
+  if (mediaItems.length > 1) {
+    const prevBtn = document.createElement("button");
+    prevBtn.className = "gallery-nav gallery-prev";
+    prevBtn.innerHTML = "&#10094;"; // <
+    prevBtn.onclick = (e) => { e.stopPropagation(); prevSlide(); };
+
+    const nextBtn = document.createElement("button");
+    nextBtn.className = "gallery-nav gallery-next";
+    nextBtn.innerHTML = "&#10095;"; // >
+    nextBtn.onclick = (e) => { e.stopPropagation(); nextSlide(); };
+
+    galleryContainer.appendChild(prevBtn);
+    galleryContainer.appendChild(nextBtn);
+  }
+
+  windowManager.open(`proj-${title}`, title, galleryContainer);
+};
+
+(window as any).openProjectExplorer = () => {
+  const container = document.createElement('div');
+  container.className = 'explorer-grid';
+
+  command.projects.forEach((proj: any[]) => {
+    // Destructure based on new config structure: 
+    // [Title, Desc, Link, Thumb, Video, Screenshots[]]
+    const [rawTitle, _desc, rawLink, imgPath, videoUrl, screenshots] = proj;
+
+    const title = escapeHTML(rawTitle);
+    const link = escapeHTML(rawLink);
+    const video = videoUrl ? escapeHTML(videoUrl) : undefined;
+    // Screenshots are array, no need to escape array object itself, but items inside logic handled in openProjectWindow
+
+    const item = document.createElement('div');
+    item.className = 'explorer-item';
+
+    // Pass screenshots array
+    item.onclick = () => (window as any).openProjectWindow(title, link, video, screenshots);
+
+    const img = document.createElement('img');
+    img.src = imgPath || 'https://img.icons8.com/color/96/folder-invoices--v1.png';
+    img.className = 'explorer-icon';
+    img.onerror = () => { img.src = 'https://img.icons8.com/color/96/folder-invoices--v1.png'; };
+
+    const label = document.createElement('span');
+    label.className = 'explorer-label';
+    label.innerText = rawTitle;
+
+    item.appendChild(img);
+    item.appendChild(label);
+    container.appendChild(item);
+  });
+
+  windowManager.open('project-explorer', 'Project Explorer', container);
+};
 
 
 
@@ -226,6 +384,32 @@ function commandHandler(input: string) {
     }
   }
 
+  if (input.startsWith("projects")) {
+    const args = input.trim().split(/\s+/);
+    if (bareMode) {
+      writeLines(["I don't want you to break the other projects.", "<br>"]);
+      return;
+    }
+
+    const isDesktop = window.innerWidth > 600;
+    const hasGuiFlag = args.includes('--gui');
+
+    // Default to GUI on desktop if not explicitly asking for text mode (though current logic forces gui unless overridden/logic changed)
+    // Here we ensure desktop users get the explorer by default as requested.
+    if (isDesktop && !hasGuiFlag) {
+      (window as any).openProjectExplorer();
+      writeLines(["Opening Project Explorer...", "<br>"]);
+      return;
+    }
+
+    if (isDesktop && !args.includes('--gui')) {
+      args.push('--gui');
+    }
+
+    writeLines(createProject(args));
+    return;
+  }
+
   switch (input) {
     case 'clear':
       setTimeout(() => {
@@ -295,10 +479,24 @@ function commandHandler(input: string) {
         writeLines(["resume not found.", "<br>"])
         break;
       }
-      writeLines(["Opening resume...", "<br>"]);
-      setTimeout(() => {
-        window.open(RESUME_LINK, '_blank');
-      }, 500);
+
+      // Check for mobile
+      if (window.innerWidth <= 600) {
+        writeLines(["Opening resume...", "<br>"]);
+        setTimeout(() => {
+          window.open(RESUME_LINK, '_blank');
+        }, 500);
+      } else {
+        const downloadBtn = `<a href="${RESUME_LINK}" download class="command" style="text-decoration: underline; margin-left: 10px;">[Download PDF]</a>`;
+        writeLines(["Launching Resume Viewer..." + downloadBtn, "<br>"]);
+        setTimeout(() => {
+          // Just the iframe, no header
+          const content = `<iframe src="${RESUME_LINK}" style="width:100%; height:100%; border:none;"></iframe>`;
+
+          // Open with specific A4-like dimensions (e.g. 600x850)
+          windowManager.open('resume', 'Resume.pdf', content, 600, 800);
+        }, 500);
+      }
       break;
     case 'linkedin':
       writeLines([`LinkedIn: <a href='${SOCIAL.linkedin}' target='_blank'>${SOCIAL.linkedin}</a>`, "<br>"]);
@@ -469,12 +667,21 @@ const initEventListeners = () => {
 
   window.addEventListener('click', (e) => {
     const target = e.target as HTMLElement;
-    if (target.tagName === 'BUTTON' && target.classList.contains('action-btn')) {
-      const cmd = target.getAttribute('data-cmd');
+    const button = target.closest('button');
+
+    if (button && button.classList.contains('action-btn')) {
+      const cmd = button.getAttribute('data-cmd');
       if (cmd === 'theme-random') {
-        const themes = Object.keys(builtInThemes);
-        const randomTheme = themes[Math.floor(Math.random() * themes.length)];
-        runCommand(`theme ${randomTheme}`);
+        const themeNames = Object.keys(builtInThemes);
+        // Sequential Cycling
+        const currentTheme = localStorage.getItem('currentTheme') || 'classic';
+        let nextIndex = themeNames.indexOf(currentTheme) + 1;
+        if (nextIndex >= themeNames.length) nextIndex = 0;
+
+        const nextTheme = themeNames[nextIndex];
+        // Store for next cycle (setTheme should probably handle this, but we'll do it here to ensure cycle works)
+        localStorage.setItem('currentTheme', nextTheme);
+        runCommand(`theme ${nextTheme}`);
       } else if (cmd) {
         runCommand(cmd);
       }
@@ -494,13 +701,7 @@ const initEventListeners = () => {
     USERINPUT.focus();
   });
 
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', () => {
-      scrollToBottom();
-    });
-  }
 
-  console.log(`%cPassword: ${command.password}`, "color: red; font-size: 20px;");
 }
 
 function runCommand(cmd: string) {

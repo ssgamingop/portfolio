@@ -16,17 +16,17 @@
     "  ╚══════╝╚══════╝"
   ],
   "title": "Somyajeet Singh | AI & ML Engineer",
-  "username": "somyajeet",
-  "hostname": "somya15@",
+  "username": "somyacodes",
+  "hostname": "portfolio",
   "password": "admin",
   "repoLink": "https://github.com/ssgamingop/portfolio",
-  "resume": "https://docs.google.com/",
+  "resume": "/projects/resume.pdf",
   "social": {
     "email": "somyajeetsingh15@gmail.com",
     "github": "https://github.com/ssgamingop",
-    "linkedin": "https://www.linkedin.com/in/somyajeetsingh"
+    "linkedin": "https://linkedin.com/in/somyajeetsingh"
   },
-  "aboutGreeting": "Hello. I am Somyajeet Singh. Welcome to my digital workspace.",
+  "aboutGreeting": "Hello, I’m Somyajeet Singh — welcome to my digital workspace.",
   "education": [
     {
       "institution": "ITM Skills University, Navi Mumbai",
@@ -69,24 +69,43 @@
   "projects": [
     [
       "Music Visualizer using Python",
-      "imple audio visualizer made in Python. It plays .wav files and shows cool effects",
-      "https://github.com/ssgamingop/ss-music-visualizer"
+      "Audio visualizer built in Python that plays .wav files and renders real-time visual effects.",
+      "https://github.com/ssgamingop/ss-music-visualizer",
+      "/projects/music-vis.png",
+      null,
+      [
+        "/projects/music-vis.mp4",
+        "/projects/music-vis-1.png",
+        "/projects/music-vis-2.png"
+      ]
     ],
     [
       "AR-Based Interactive Projects",
-      "Experimental AR apps using OpenCV and Python with mouse interactions.",
-      "https://github.com/ssgamingop/kit_making"
+      "Experimental AR applications built with OpenCV and Python, featuring real-time mouse-based interactions.",
+      "https://github.com/ssgamingop/kit_making",
+      "/projects/ar-kit.png",
+      null,
+      [
+        "/projects/ar-kit-2.mp4",
+        "/projects/ar-kit-1.png"
+      ]
     ],
     [
       "Sur Sangam - Music Generator",
       "AI to generate Hindi lyrics, compose music, and suggest improvements with browser-based persistent storage.",
-      "https://github.com/ssgamingop/sur_sangam"
+      "https://github.com/ssgamingop/sur_sangam",
+      "/projects/sur-sangam.png",
+      null,
+      [
+        "/projects/sur-sangam-1.png",
+        "/projects/sur-sangam-2.png"
+      ]
     ]
   ],
   "futureGoals": [
-    "Become a skilled AI Engineer",
-    "Build intelligent systems and automation tools",
-    "Contribute to impactful tech projects"
+    "Develop strong expertise in AI & ML systems",
+    "Build intelligent automation and decision-support tools",
+    "Contribute to meaningful, real-world tech projects"
   ],
   "strengths": [
     "Creative thinking",
