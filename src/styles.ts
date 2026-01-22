@@ -1,4 +1,5 @@
 import { builtInThemes, ThemeColors } from './commands/themes';
+import { hexToRgba } from './utils';
 
 let styleElement: HTMLStyleElement | null = null;
 
@@ -81,6 +82,16 @@ export const setTheme = (colors: ThemeColors) => {
   sheet.insertRule(sidebar, sheet.cssRules.length);
   sheet.insertRule(actionBtn, sheet.cssRules.length);
   sheet.insertRule(actionBtnHover, sheet.cssRules.length);
+
+  // Window System Variables
+  const root = document.documentElement;
+  root.style.setProperty('--win-bg', hexToRgba(colors.background, 0.95));
+  root.style.setProperty('--win-border', colors.border.color);
+  root.style.setProperty('--win-title-color', hexToRgba(colors.foreground, 0.9));
+  root.style.setProperty('--win-scrollbar-thumb', colors.border.color);
+  root.style.setProperty('--win-scrollbar-thumb-hover', colors.banner);
+  root.style.setProperty('--win-active-border', colors.banner); // Using banner/accent color for active state
+  root.style.setProperty('--win-controls-hover', colors.border.color);
 }
 
 // Initial set

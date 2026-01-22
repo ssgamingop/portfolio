@@ -91,6 +91,8 @@ There are a few hidden interactions to discover:
 * Try using `sudo`.
 * Be careful with `rm -rf`.
 
+![Sudo Permission Granted](res/secret.png)
+
 ## Run the Project Locally:
 
 Clone the repository

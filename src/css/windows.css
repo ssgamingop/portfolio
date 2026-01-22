@@ -13,13 +13,13 @@
     height: 480px;
 
     /* Terminal Aesthetic: Darker, sharper, minimal blur */
-    background: rgba(13, 17, 23, 0.95);
+    background: var(--win-bg, rgba(13, 17, 23, 0.95));
     /* Nearly opaque */
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
 
     /* Sharp Borders */
-    border: 1px solid #30363D;
+    border: 1px solid var(--win-border, #30363D);
     border-radius: 0;
 
     /* Terminal Shadow */
@@ -38,8 +38,8 @@
 }
 
 .desktop-window.is-active {
-    border-color: #58A6FF;
-    box-shadow: 0 0 0 1px #58A6FF, 0 10px 30px rgba(0, 0, 0, 0.9);
+    border-color: var(--win-active-border, #58A6FF);
+    box-shadow: 0 0 0 1px var(--win-active-border, #58A6FF), 0 10px 30px rgba(0, 0, 0, 0.9);
     z-index: 1001;
 }
 
@@ -65,7 +65,7 @@
     padding: 0 12px;
     cursor: grab;
     user-select: none;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--win-title-color, rgba(255, 255, 255, 0.9));
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -93,8 +93,8 @@
 }
 
 .win-btn:hover {
-    background: #30363D;
-    color: #ffffff;
+    background: var(--win-controls-hover, #30363D);
+    color: var(--win-bg, #ffffff);
 }
 
 .close-btn:hover {
@@ -128,12 +128,12 @@
 }
 
 .window-content::-webkit-scrollbar-thumb {
-    background: #30363D;
+    background: var(--win-scrollbar-thumb, #30363D);
     border-radius: 4px;
 }
 
 .window-content::-webkit-scrollbar-thumb:hover {
-    background: #58A6FF;
+    background: var(--win-scrollbar-thumb-hover, #58A6FF);
 }
 
 @media (max-width: 600px) {
