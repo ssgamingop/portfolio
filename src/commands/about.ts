@@ -19,9 +19,10 @@ const createAbout = (): string[] => {
   about.push("<br>");
 
   // Professional Summary
-  about.push("I work across design and development.");
+  about.push("Building modern web apps with React, Node.js, and AI integrations.");
   about.push("<br>");
   about.push("I think about layout, interaction, and logic as parts of the same system.");
+  about.push("<br>"); 
   about.push("I like having control from idea to implementation.");
   about.push("<br>");
   about.push("Most of my learning comes from building, experimenting, ");

@@ -7,10 +7,11 @@ import { getBanner } from "./commands/banner";
 import { ABOUT } from "./commands/about"
 import { createProject } from "./commands/projects";
 import { EDUCATION } from "./commands/education";
-import { SKILLS } from "./commands/skills";
+
 import { createWhoami } from "./commands/whoami";
 import { setTheme } from "./styles";
 import { builtInThemes, THEME_HELP } from "./commands/themes";
+import { getSkills } from "./commands/skills";
 import { WindowManager } from './windowManager';
 import { InputManager } from './core/InputManager';
 import { CommandDispatcher } from './core/CommandDispatcher';
@@ -184,7 +185,7 @@ const registerCommands = () => {
 
   dispatcher.register("skills", () => {
     if (bareMode) { writeLines(["Skill issue.", "<br>"]); return; }
-    writeLines(SKILLS);
+    writeLines(getSkills());
   });
 
   dispatcher.register("repo", () => {
