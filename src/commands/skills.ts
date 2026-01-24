@@ -10,6 +10,7 @@ const createSkills = (): string[] => {
         const categories = [
             { key: 'languages', label: 'Languages' },
             { key: 'web', label: 'Web Technologies' },
+            { key: 'backend', label: 'Backend' },
             { key: 'ai_ml', label: 'AI/ML' },
             { key: 'tools', label: 'Tools' }
         ];

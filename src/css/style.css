@@ -129,7 +129,58 @@ input {
   font-size: 16px;
   color: #FF7685;
   caret-color: var(--prompt-default);
-  width: 50%;
+  width: 100%;
+  background: transparent;
+}
+
+#ghost-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 16px;
+  color: var(--text);
+  /* Use main text color instead of prompt color for better brightness */
+  white-space: pre;
+  z-index: 1;
+}
+
+#user-input {
+  position: relative;
+  z-index: 2;
+  color: transparent;
+  caret-color: transparent;
+  background: transparent;
+}
+
+.ghost-text {
+  opacity: 0.25;
+  /* Dimmer for better contrast */
+  filter: grayscale(1);
+  /* Optional: make it fully gray if prompt has color */
+}
+
+.cursor-block {
+  display: inline-block;
+  background-color: var(--text, #E6EDF3);
+  /* Use text color for cursor block */
+  color: var(--bg, #0D1117);
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 a {
@@ -201,6 +252,7 @@ a:hover {
   flex-direction: column;
   min-height: 0;
   overflow: hidden;
+  padding-left: 20px;
 }
 
 #content-wrapper {
@@ -232,11 +284,12 @@ a:hover {
 }
 
 #terminal {
-  margin-left: 20px;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 #input-line {
-  margin-left: 20px;
+  margin-left: 0;
   overflow-x: hidden;
   width: 100%;
   flex-shrink: 0;
@@ -370,6 +423,10 @@ a:hover {
     margin-left: 8px;
   }
 
+  #terminal-layout {
+    padding-left: 0;
+  }
+
   .lower-main {
     flex-direction: column;
   }
@@ -415,5 +472,32 @@ a:hover {
     /* Center in the grid cell */
     margin-top: 0;
     align-self: center;
+  }
+}
+
+#password-input {
+  animation: none;
+  white-space: nowrap;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  margin-left: 0;
+}
+
+#password-input input {
+  color: #FF7685;
+}
+
+#password-field {
+  width: auto;
+  flex: 1;
+  margin-left: 10px;
+  color: #FF7685;
+  background: transparent;
+}
+
+@media (max-width: 600px) {
+  #password-input {
+    margin-left: 8px;
   }
 }

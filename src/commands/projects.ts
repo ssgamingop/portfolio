@@ -16,29 +16,36 @@ const createProject = (args?: string[]): string[] => {
   command.projects.forEach((ele: any[]) => {
     let string = "";
     // Config: [Title, Desc, Link, Img, Video, Screenshots[]]
-    const title = escapeHTML(ele[0]);
-    const url = escapeHTML(ele[2]);
-    const videoUrl = ele[4] ? escapeHTML(ele[4]) : undefined;
-    const screenshots = ele[5] ? ele[5] as string[] : undefined;
+    const rawTitle = ele[0];
+    const rawUrl = ele[2];
+    const rawVideoUrl = ele[4];
+    const rawScreenshots = ele[5];
 
-    // Prepare arguments for openProjectWindow
-    // We need to pass screenshots as a JS array literal string if it exists.
-    // e.g. openProjectWindow('t', 'l', 'v', ['s1', 's2'])
+    // For Display: standard HTML escaping
+    const displayTitle = escapeHTML(rawTitle);
 
-    // Quote and escape strings for the array
-    const screenshotsArg = screenshots
-      ? `[${screenshots.map(s => `'${escapeHTML(s)}'`).join(', ')}]`
+    // For JS Arguments (inside onclick):
+    // 1. JSON.stringify() to get a valid JS string literal (e.g. "It's time")
+    // 2. escapeHTML() to make it safe to sit inside an HTML attribute (encodes " to &quot;)
+    const jsTitle = escapeHTML(JSON.stringify(rawTitle));
+    const jsUrl = escapeHTML(JSON.stringify(rawUrl));
+
+    const jsVideo = rawVideoUrl
+      ? escapeHTML(JSON.stringify(rawVideoUrl))
       : 'undefined';
 
-    const videoArg = videoUrl ? `'${videoUrl}'` : 'undefined';
+    const jsScreenshots = rawScreenshots
+      ? escapeHTML(JSON.stringify(rawScreenshots))
+      : 'undefined';
 
-    const onClickCall = `window.openProjectWindow('${title}', '${url}', ${videoArg}, ${screenshotsArg})`;
+    const onClickCall = `window.openProjectWindow(${jsTitle}, ${jsUrl}, ${jsVideo}, ${jsScreenshots})`;
 
     // WebDesktop Link (Main Click)
-    let link = `<span class="command" style="cursor: pointer;" onclick="${onClickCall}">${title}</span>`;
+    let link = `<span class="command" style="cursor: pointer;" onclick="${onClickCall}">${displayTitle}</span>`;
 
-    // External Icon (GitHub)
-    let ext = `<a href="${url}" target="_blank" style="margin-left: 8px; text-decoration: none;"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>`;
+    // External Icon (GitHub) - rawUrl ok here because it's inside href="..." which browsers handle if standardly quoted, 
+    // but better to escapeHTML(rawUrl) for safety in case of double quotes in URL.
+    let ext = `<a href="${escapeHTML(rawUrl)}" target="_blank" style="margin-left: 8px; text-decoration: none;"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>`;
 
     string += SPACE.repeat(2);
     string += link + ext;

@@ -92,6 +92,9 @@ export const setTheme = (colors: ThemeColors) => {
   root.style.setProperty('--win-scrollbar-thumb-hover', colors.banner);
   root.style.setProperty('--win-active-border', colors.banner); // Using banner/accent color for active state
   root.style.setProperty('--win-controls-hover', colors.border.color);
+
+  // Folder Icon Color (matches banner/accent)
+  root.style.setProperty('--folder-color', colors.banner);
 }
 
 // Initial set

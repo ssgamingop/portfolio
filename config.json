@@ -1,21 +1,20 @@
 {
   "ascii": [
-    "███████╗ ██████╗ ███╗   ███╗██╗   ██╗ █████╗      ██╗███████╗███████╗████████╗",
-    "██╔════╝██╔═══██╗████╗ ████║╚██╗ ██╔╝██╔══██╗     ██║██╔════╝██╔════╝╚══██╔══╝",
-    "███████╗██║   ██║██╔████╔██║ ╚████╔╝ ███████║     ██║█████╗  █████╗     ██║   ",
-    "╚════██║██║   ██║██║╚██╔╝██║  ╚██╔╝  ██╔══██║██   ██║██╔══╝  ██╔══╝     ██║   ",
-    "███████║╚██████╔╝██║ ╚═╝ ██║   ██║   ██║  ██║╚█████╔╝███████╗███████╗   ██║   ",
-    "╚══════╝ ╚═════╝ ╚═╝     ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚════╝ ╚══════╝╚══════╝   ╚═╝"
+    "                                                 █▄ ",
+    "                                  ▀▀            ▄██▄",
+    " ▄██▀█ ▄███▄ ███▄███▄ ██ ██ ▄▀▀█▄ ██ ▄█▀█▄ ▄█▀█▄ ██ ",
+    " ▀███▄ ██ ██ ██ ██ ██ ██▄██ ▄█▀██ ██ ██▄█▀ ██▄█▀ ██ ",
+    "█▄▄██▀▄▀███▀▄██ ██ ▀█▄▄▀██▀▄▀█▄██▄██▄▀█▄▄▄▄▀█▄▄▄▄██ ",
+    "                        ██        ██                ",
+    "                      ▀▀▀       ▀▀▀                 "
   ],
   "asciiMobile": [
-    "  ███████╗███████╗",
-    "  ██╔════╝██╔════╝",
-    "  ███████╗███████╗",
-    "  ╚════██║╚════██║",
-    "  ███████║███████║",
-    "  ╚══════╝╚══════╝"
+    " ▄██▀█ ▄██▀█",
+    " ▀███▄ ▀███▄",
+    "█▄▄██▀█▄▄██▀",
+    "            "
   ],
-  "title": "Somyajeet Singh | AI & ML Engineer",
+  "title": "Full-Stack Developer | AI/ML",
   "username": "somyacodes",
   "hostname": "portfolio",
   "password": "admin",
@@ -26,7 +25,7 @@
     "github": "https://github.com/ssgamingop",
     "linkedin": "https://linkedin.com/in/somyajeetsingh"
   },
-  "aboutGreeting": "Hello, I’m Somyajeet Singh — welcome to my digital workspace.",
+  "aboutGreeting": "Building modern web apps with React, Node.js, and AI integrations.",
   "education": [
     {
       "institution": "ITM Skills University, Navi Mumbai",
@@ -47,23 +46,39 @@
   "skills": {
     "languages": [
       "Python",
-      "JavaScript",
+      "JavaScript (ES6+)",
+      "TypeScript",
       "C++ (Basics)"
     ],
     "web": [
+      "React.js",
+      "Next.js",
+      "Tailwind CSS",
+      "Sass (SCSS)",
       "HTML5",
-      "CSS3",
-      "JavaScript"
+      "CSS3"
+    ],
+    "backend": [
+      "Node.js",
+      "Express.js",
+      "NestJS",
+      "Supabase",
+      "MongoDB",
+      "PostgreSQL"
     ],
     "ai_ml": [
-      "Problem-solving mindset",
-      "Automation workflows",
-      "ML Fundamentals"
+      "Python",
+      "NumPy",
+      "Pandas",
+      "Scikit-learn",
+      "AI Workflows"
     ],
     "tools": [
       "Git & GitHub",
-      "Figma",
-      "API Integration"
+      "Docker",
+      "VS Code",
+      "Terminal",
+      "Figma"
     ]
   },
   "projects": [
@@ -71,7 +86,7 @@
       "Music Visualizer using Python",
       "Audio visualizer built in Python that plays .wav files and renders real-time visual effects.",
       "https://github.com/ssgamingop/ss-music-visualizer",
-      "/projects/folder.png",
+      null,
       null,
       [
         "/projects/music-vis.mp4",
@@ -83,7 +98,7 @@
       "AR-Based Interactive Projects",
       "Experimental AR applications built with OpenCV and Python, featuring real-time mouse-based interactions.",
       "https://github.com/ssgamingop/kit_making",
-      "/projects/folder.png",
+      null,
       null,
       [
         "/projects/ar-kit-2.mp4",
@@ -94,7 +109,7 @@
       "Sur Sangam - Music Generator",
       "AI to generate Hindi lyrics, compose music, and suggest improvements with browser-based persistent storage.",
       "https://github.com/ssgamingop/sur_sangam",
-      "/projects/folder.png",
+      null,
       null,
       [
         "/projects/sur-sangam-1.png",

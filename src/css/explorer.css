@@ -106,12 +106,22 @@
     height: 64px;
     object-fit: cover;
     margin-bottom: 12px;
-    border-radius: 2px;
-    background: transparent;
+    border-radius: 0;
+    /* Icons usually don't need border radius if they are shapes */
+    background-color: var(--folder-color, #58A6FF);
+    /* Fallback to blue */
     border: none;
-    filter: none;
-    /* remove deep shadow */
-    transition: none;
+    transition: background-color 0.3s ease;
+
+    /* Default Mask (Folder) - Uses local file */
+    -webkit-mask-image: url('/projects/folder.png');
+    mask-image: url('/projects/folder.png');
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
 }
 
 .explorer-item:hover .explorer-icon {

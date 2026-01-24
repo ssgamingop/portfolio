@@ -111,3 +111,7 @@ Start the server
 ```shell
 npm run dev
 ```
+
+## Recent Updates
+* **v1.1.1**: Fixed `sudo` command alignment issues (CSS architecture improved).
+* **v1.1.0**: Added PDF Resume Viewer and Project Gallery.
