@@ -1,6 +1,6 @@
 
-import { WindowManager } from '../windowManager';
-import { escapeHTML } from '../utils';
+import { WindowManager } from '../core/WindowManager';
+import { escapeHTML } from '../core/Utils';
 import command from '../../config.json';
 
 export class ProjectViewer {

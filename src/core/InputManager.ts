@@ -1,4 +1,4 @@
-import { escapeHTML } from "../utils";
+import { escapeHTML } from "./Utils";
 
 export class InputManager {
     private userInput: HTMLInputElement;

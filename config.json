@@ -45,40 +45,110 @@
   ],
   "skills": {
     "languages": [
-      "Python",
-      "JavaScript (ES6+)",
-      "TypeScript",
-      "C++ (Basics)"
+      {
+        "name": "Python",
+        "desc": "Data Science & Scripting"
+      },
+      {
+        "name": "JavaScript (ES6+)",
+        "desc": "Web Interaction"
+      },
+      {
+        "name": "TypeScript",
+        "desc": "Type Safety"
+      },
+      {
+        "name": "C++ (Basics)",
+        "desc": "System Programming"
+      }
     ],
     "web": [
-      "React.js",
-      "Next.js",
-      "Tailwind CSS",
-      "Sass (SCSS)",
-      "HTML5",
-      "CSS3"
+      {
+        "name": "React.js",
+        "desc": "UI Library"
+      },
+      {
+        "name": "Next.js",
+        "desc": "Full-Stack Framework"
+      },
+      {
+        "name": "Tailwind CSS",
+        "desc": "Utility-First Styling"
+      },
+      {
+        "name": "Sass (SCSS)",
+        "desc": "CSS Preprocessor"
+      },
+      {
+        "name": "HTML5",
+        "desc": "Markup"
+      },
+      {
+        "name": "CSS3",
+        "desc": "Styling"
+      }
     ],
     "backend": [
-      "Node.js",
-      "Express.js",
-      "NestJS",
-      "Supabase",
-      "MongoDB",
-      "PostgreSQL"
+      {
+        "name": "Node.js",
+        "desc": "REST APIs"
+      },
+      {
+        "name": "Express.js",
+        "desc": "Middleware & Auth"
+      },
+      {
+        "name": "NestJS",
+        "desc": "Scalable Services"
+      },
+      {
+        "name": "MongoDB",
+        "desc": "NoSQL"
+      },
+      {
+        "name": "PostgreSQL",
+        "desc": "Relational"
+      }
     ],
     "ai_ml": [
-      "Python",
-      "NumPy",
-      "Pandas",
-      "Scikit-learn",
-      "AI Workflows"
+      {
+        "name": "NumPy",
+        "desc": "Numerical Computing"
+      },
+      {
+        "name": "Pandas",
+        "desc": "Data Analysis"
+      },
+      {
+        "name": "Scikit-learn",
+        "desc": "Machine Learning"
+      },
+      {
+        "name": "AI Workflows",
+        "desc": "Automation"
+      }
     ],
     "tools": [
-      "Git & GitHub",
-      "Docker",
-      "VS Code",
-      "Terminal",
-      "Figma"
+      {
+        "name": "Git & GitHub",
+        "desc": "Version Control"
+      },
+      {
+        "name": "Docker",
+        "desc": "Containerization"
+      },
+      {
+        "name": "VS Code",
+        "desc": "Development Environment"
+      },
+      {
+        "name": "Terminal",
+        "desc": "CLI"
+      },
+      {
+        "name": "Figma",
+        "desc": "UI/UX Design"
+      }
     ]
   },
   "projects": [

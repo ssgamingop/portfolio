@@ -24,8 +24,8 @@ const createBanner = (): string[] => {
   });
   banner.push("<br>");
   banner.push("Welcome to Webterm v1.1.1");
-  banner.push("Type <span class='command'>'help'</span> for a list of all available commands.");
-  banner.push(`Type <a href='${command.repoLink}' target='_blank'><span class='command'>'repo'</span></a> to view the GitHub repository.`);
+  banner.push("Type <span class='command clickable' data-command='help'>'help'</span> for a list of all available commands.");
+  banner.push(`Type <span class='command clickable' data-command='repo'>'repo'</span> to view the GitHub repository.`);
   banner.push("<br>");
   return banner;
 }

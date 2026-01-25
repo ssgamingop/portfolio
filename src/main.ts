@@ -1,7 +1,7 @@
 
 import command from '../config.json';
 import './css/explorer.css';
-import { escapeHTML } from './utils';
+import { escapeHTML } from './core/Utils';
 import { HELP } from "./commands/help";
 import { getBanner } from "./commands/banner";
 import { ABOUT } from "./commands/about"
@@ -9,10 +9,10 @@ import { createProject } from "./commands/projects";
 import { EDUCATION } from "./commands/education";
 
 import { createWhoami } from "./commands/whoami";
-import { setTheme } from "./styles";
+import { setTheme } from "./core/ThemeManager";
 import { builtInThemes, THEME_HELP } from "./commands/themes";
 import { getSkills } from "./commands/skills";
-import { WindowManager } from './windowManager';
+import { WindowManager } from './core/WindowManager';
 import { InputManager } from './core/InputManager';
 import { CommandDispatcher } from './core/CommandDispatcher';
 import { ProjectViewer } from './ui/ProjectViewer';

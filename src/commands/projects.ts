@@ -1,5 +1,5 @@
 import command from '../../config.json';
-import { escapeHTML } from '../utils';
+import { escapeHTML } from '../core/Utils';
 
 const createProject = (args?: string[]): string[] => {
   const projects: string[] = [];
